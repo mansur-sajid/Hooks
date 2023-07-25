@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useReducer, useEffect, useRef, createContext} from 'react';
+import Navbar from './components/Navbar';
+import Test from './components/test';
+import Input from "./components/Input"
+
+export let appContext = createContext();
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  let [data, setData] = useState({name: "mansur", relegion: "islam"})
+  return(
+    <>
+    <appContext.Provider value = {{data, setData}} >
+    <Navbar/>
+    <Input/>
+    </appContext.Provider>
+    </>
   );
 }
 
-export default App;
+export default App; 
